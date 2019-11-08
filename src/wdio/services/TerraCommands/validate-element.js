@@ -26,10 +26,7 @@ const validatesElement = (...args) => {
     misMatchTolerance,
   } = determineOptions.screenshotOptions(args);
 
-  const { theme } = global.browser.options;
-  if (theme !== 'clinical-lowlight-theme') {
-    accessibilityMethods.runAccessibilityTest({ rules });
-  }
+  accessibilityMethods.runAccessibilityTest({ rules });
   visualRegressionMethods.runMatchScreenshotTest(selector, { misMatchTolerance, name });
 };
 
