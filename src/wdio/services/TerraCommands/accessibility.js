@@ -12,12 +12,9 @@ import determineOptions from './determine-test-options';
 const runAccessibilityTest = (options) => {
   const { theme } = global.browser.options;
   if (theme !== 'clinical-lowlight-theme') {
-    options.rules = {
-      'color-contrast': { enabled: false },
-    };
+    const axeResults = global.browser.axe(options);
+    global.expect(axeResults).to.be.accessible();
   }
-  const axeResults = global.browser.axe(options);
-  global.expect(axeResults).to.be.accessible();
 };
 
 /**
